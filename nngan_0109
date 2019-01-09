@@ -1,1 +1,15 @@
-
+function b = slide_2(a,d)
+    [xa,ya] = size(a);
+    nxa = xa + 2*d;
+    nya = ya + 2*d;
+    a1 = [zeros(d,ya);a;zeros(d,ya)];
+    a1 = [zeros(xa+2*d,d),a1,zeros(xa+2*d,d)];
+    b = zeros(xa,ya);
+    for k = d + 1:xa + d
+        for r = d + 1:ya + d
+            k1 = k - d;
+            r1 = r - d;
+            b(k1,r1) = mean(mean(a1(k-d:k+d,r-d:r+d)));
+        end
+    end
+end
